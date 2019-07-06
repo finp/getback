@@ -1,0 +1,13 @@
+site:
+  title: Graphback
+  url: https://graphback.netlify.com
+  start_page: graphback::index
+content:
+  sources:
+  - url: .
+    start_path: target
+    branches: HEAD
+ui:
+  bundle:
+    url: ./ui-bundle.zip
+    
