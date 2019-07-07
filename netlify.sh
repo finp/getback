@@ -36,4 +36,4 @@ cp $NAV_DOC target/modules/ROOT/nav.adoc
 cp -Lr $INDEX_DOC target/modules/ROOT/pages/index.adoc
 
 
-node_modules/.bin/antora  ./local-site.yml
+node_modules/.bin/antora  ./site.yml
