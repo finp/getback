@@ -34,7 +34,7 @@ cp antora.yml target
 
 cp $NAV_DOC target/modules/ROOT/nav.adoc
 
-sed -i 's/?id=/.html#/g' target/modules/ROOT/nav.adoc
+sed -i 's/.*\*\*.*//g' target/modules/ROOT/nav.adoc
 
 
 cp -Lr $INDEX_DOC target/modules/ROOT/pages/index.adoc
