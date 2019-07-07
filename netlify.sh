@@ -21,6 +21,7 @@ find ./ -name "*.md" -type f -exec sh -c \
 
 for f in *.md.adoc; do mv "$f" "$(echo "$f" | sed s/.md.adoc/.adoc/)"; done
 
+
 cd ../../../
 
 cp -Lr $DOC_DIR target/modules/ROOT/pages
@@ -32,6 +33,9 @@ cp -Lr $DOC_DIR/images target/modules/ROOT/assets/images
 cp antora.yml target
 
 cp $NAV_DOC target/modules/ROOT/nav.adoc
+
+sed -i 's/?id=/.html#/g' target/modules/ROOT/nav.adoc
+
 
 cp -Lr $INDEX_DOC target/modules/ROOT/pages/index.adoc
 

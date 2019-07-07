@@ -1,6 +1,6 @@
 export DOC_DIR=target/graphback/docs/
-export INDEX_DOC=target/graphback/docs/README.md.adoc
-export NAV_DOC=target/graphback/docs/_sidebar.md.adoc
+export INDEX_DOC=target/graphback/docs/README.adoc
+export NAV_DOC=target/graphback/docs/_sidebar.adoc
 
 rm -r target
 mkdir target
@@ -16,19 +16,22 @@ cd graphback/docs
 find ./ -name "*.md" -type f -exec sh -c \
     'kramdoc --format=GFM --wrap=ventilate --output={}.adoc {}' \;
 
+for f in *.md.adoc; do mv "$f" "$(echo "$f" | sed s/.md.adoc/.adoc/)"; done
 
-cd ../../..
+
+cd ../../../
 
 cp -Lr $DOC_DIR target/modules/ROOT/pages
 
-rename .md.adoc .adoc target/modules/ROOT/pages/*.md.adoc
-
+# rename .md.adoc .adoc target/modules/ROOT/pages/*.md.adoc
 
 cp -Lr $DOC_DIR/images target/modules/ROOT/assets/images
 
 cp antora.yml target
 
 cp $NAV_DOC target/modules/ROOT/nav.adoc
+
+sed -i 's/.*\*\*.*//g' target/modules/ROOT/nav.adoc
 
 cp -Lr $INDEX_DOC target/modules/ROOT/pages/index.adoc
 
